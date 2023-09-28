@@ -11,9 +11,6 @@ export default interface VintedUserType {
     taken_item_count: number;
     followers_count: number;
     following_count: number;
-    positive_feedback_count: number;
-    neutral_feedback_count: number;
-    negative_feedback_count: number;
     created_at: Date;
     last_loged_on_ts: Date;
     city_id: number | null;
@@ -28,5 +25,4 @@ export default interface VintedUserType {
     allow_direct_messaging: boolean;
     total_items_count: number;
     profile_url: string;
-    is_online: boolean;
 }

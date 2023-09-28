@@ -7,4 +7,5 @@ export default interface VintedUserPhoto {
     dominant_color_opaque: string | null;
     full_size_url: string | null;
     is_hidden: boolean;
+    is_suspicious: boolean
 }

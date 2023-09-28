@@ -1,7 +1,7 @@
 {
   "name": "guyguy",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "author": "Greensky <david.hesliere@gmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -11,5 +11,10 @@
     "dotenv": "^16.3.1",
     "tsc": "^2.0.4",
     "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "build": "yarn tsc -b",
+    "start": "node .",
+    "launch": "yarn install && yarn build && yarn start"
   }
 }
