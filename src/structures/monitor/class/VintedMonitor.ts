@@ -8,7 +8,7 @@ const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 export default class VintedMonitor {
     private _cache: MonitorCache[] = [];
     private found: string[] = []
-    private vintedEvent: ((item: VintedItem) => unknown) | undefined;
+    private vintedEvent: ((item: VintedItem, data: { name: string; url: string; channelId: string }) => unknown) | undefined;
     private timeRange: number;
 
     constructor(timeRange: number = 30 * 60 * 1000){
@@ -40,7 +40,7 @@ export default class VintedMonitor {
         return removed;
     }
 
-    onItemFound(callback: (item: VintedItem) => unknown) {
+    onItemFound(callback: (item: VintedItem, search: { name: string; channelId: string; url: string; }) => unknown) {
         this.vintedEvent = callback;
     }
 
@@ -73,7 +73,7 @@ export default class VintedMonitor {
                 database.pushTo('cache', newItem.info.id.toString())
 
                 this._cache[id].items.push(finishedItem);
-                if (this.vintedEvent) this.vintedEvent(newItem);
+                if (this.vintedEvent) this.vintedEvent(newItem, database.getValue('searchs').find(x => x.url === url));
                 await sleep(1000);
                 this.check(id, false)
             }

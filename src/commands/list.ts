@@ -13,10 +13,10 @@ export default new AmethystCommand({
     const packetSize = 25
     const packets = chunkArray(subscriptions, packetSize)
 
-    const embed = (packet: { url: string; name: string; }[]) => {
+    const embed = (packet: { url: string; name: string; channelId: string; }[]) => {
         return new EmbedBuilder()
             .setTitle("Abonnements")
-            .setDescription(`${packet.map(x => `[${x.name}](${x.url})`).join('\n')}`)
+            .setDescription(`${packet.map(x => `[${x.name}](${x.url}) dans <#${x.channelId}>`).join('\n')}`)
             .setColor('Orange')
             .setFooter({ text: interaction.user.username, iconURL: interaction.user.displayAvatarURL() })
     }

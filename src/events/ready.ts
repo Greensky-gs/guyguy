@@ -5,13 +5,10 @@ import { itemEmbed } from "../contents/embeds";
 import database from "../cache/database";
 
 export default new AmethystEvent('ready', async(client) => {
-    const channel = (client.channels.cache.get(process.env.channelId) ?? await client.channels.fetch(process.env.channelId).catch(log4js.trace)) as TextChannel
-    if (!channel) {
-        throw new Error("No channel found")
-    }
+    const cache: Record<string, TextChannel> = {}
 
     monitor.watch(database.getValue('searchs').map(x => x.url))
-    monitor.onItemFound((item) => {
+    monitor.onItemFound(async (item, search) => {
         const components = () => {
             return [
                 new ActionRowBuilder()
@@ -29,6 +26,12 @@ export default new AmethystEvent('ready', async(client) => {
                     )
             ] as ActionRowBuilder<ButtonBuilder>[]
         }
+
+        const id = search.channelId
+        const channel = (cache[id] ?? client.channels.cache.get(id) ?? await client.channels.fetch(id).catch(log4js.trace)) as TextChannel
+        if (!channel) return;
+
+        if (!cache[id]) cache[id] = channel
 
         if (channel) channel.send({
             embeds: [ itemEmbed(client, item) ],
