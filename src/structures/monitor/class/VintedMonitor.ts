@@ -14,8 +14,20 @@ export default class VintedMonitor {
     constructor(timeRange: number = 30 * 60 * 1000){
         this.timeRange = timeRange;
         this.found = database.getValue('cache')
+
+        this.start()
     }
 
+    private start() {
+        setInterval(() => {
+            this._cache.forEach((list, index) => {
+                this._cache[index] = {
+                    ...this.cache[index],
+                    items: list.items.filter(x => Date.now() - x.date.getTime() >= 3600000)
+                }
+            })
+        }, 3600000)
+    }
     public get cache() {
         return this._cache
     }
