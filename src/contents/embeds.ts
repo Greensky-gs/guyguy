@@ -19,6 +19,11 @@ export const itemEmbed = (client: Client, item: VintedItem) => {
                 inline: true
             },
             {
+                name: 'Marque',
+                value: !!item.info.brand_title ? item.info.brand_title : 'N/A',
+                inline: true
+            },
+            {
                 name: 'Taille',
                 value: item.info.size_title ?? 'N/A',
                 inline: true

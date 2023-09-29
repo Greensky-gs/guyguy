@@ -21,8 +21,7 @@ export default class Query {
                 }
             });
 
-
-            if(isProduct){
+            if(isProduct) {
                 const contentUser = query.data.match(/{"user":(.+|\n)}</g) || []
                 const parsedUser = JSON.parse(contentUser[0].slice(0,-1));
                 const contentProduct = query.data.match(/{"itemId":(.+|\n)}</g) || []
