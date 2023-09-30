@@ -13,17 +13,9 @@ export class ProxyManager {
 
     public get proxy() {
         if (this.cache.length === 0) return undefined;
-        const current = this.current
-        this.cache[this.index].uses++
-        if (current.uses + 1 >= this.maxUses) {
-            this.index++
-            if (this.index > this.cache.length - 1) {
-                this.cache = this.cache.map(x => ({ ...x, uses: 0 }))
-                this.index = 0
-            }
-        }
+        this.index++
 
-        return current.proxy
+        return this.cache[this.index % this.cache.length].proxy
     }
     private get current() {
         return this.cache[this.index]

@@ -33,7 +33,6 @@ export default class VintedMonitor {
     // Example : https://www.vinted.be/vetements?search_text=casquette&brand_id[]=362&order=newest_first&color_id[]=12
     watch(url: string | string[]){
         const push = (u: string) => {
-            this.check(this._searchs.length - 1, true);
             this._searchs.push(u)
         };
         if (Array.isArray(url)) {
@@ -49,9 +48,11 @@ export default class VintedMonitor {
         if (this.initied) return
         this.initied = true
 
-        this._searchs.forEach((_search, index) => {
-            this.check(index, true)
-        })
+        setInterval(() => {
+            for (let i = 0; i < this._searchs.length; i++) {
+                this.check(i, true)
+            }
+        }, 15000)
     }
 
     unWatch(url: string){
@@ -73,35 +74,22 @@ export default class VintedMonitor {
         let found = []
         if (request) found = await new List(url).initialize(this.timeRange);
 
-        if (found.length == 0){
-            await sleep(2000);
-            this.check(id, true);
-            return;
-        }
+        if (found.length == 0) return;
         const newItems = found.filter(x => !this.found.includes(x.id.toString()))
 
         newItems.forEach(async(item) => {
             const newItem = new VintedItem(item);
             const finishedItem = await newItem.initialize(url);
-            if(!this._searchs[id]) return
-            if(finishedItem) {
-                if (finishedItem == "rateLimit"){
-                    await sleep(5000)
-                    this.check(id, false)
-                } else {
-                    if (this.found.includes(newItem.info.id.toString())) return
-                    this.found.push(newItem.info.id.toString())
-                    database.pushTo('cache', newItem.info.id.toString())
+            if (!this._searchs[id]) return
+            if (finishedItem) {
+                if (finishedItem == "rateLimit") return
+                if (this.found.includes(newItem.info.id.toString())) return
+                
+                this.found.push(newItem.info.id.toString())
+                database.pushTo('cache', newItem.info.id.toString())
     
-                    if (this.vintedEvent) this.vintedEvent(newItem, database.getValue('searchs').find(x => x.url === url));
-                    await sleep(1000);
-                    this.check(id, false)
-                }
-            } else {
-                await sleep(2000)
-                this.check(id, true)
+                if (this.vintedEvent) this.vintedEvent(newItem, database.getValue('searchs').find(x => x.url === url));
             }
-
         })
     }
 }
