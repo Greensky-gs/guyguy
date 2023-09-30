@@ -35,6 +35,9 @@ export default new AmethystCommand({
     if (database.getValue('searchs').find(x => x.name === search)) return interaction.reply({
         content: `Vous avez déjà une recherche de ce nom`
     }).catch(log4js.trace)
+    if (search.length > 50) return interaction.reply({
+        content: ":x: | Le nom ne peut pas dépasser 50 caractères"
+    }).catch(log4js.trace)
     
     if (monitor.cache.find(x => x === url)) return interaction.reply({
         content: "Cette url est déjà surveillée"

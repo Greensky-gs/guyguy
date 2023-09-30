@@ -7,6 +7,6 @@ export default new AutocompleteListener({
     run: ({ focusedValue }) => {
         focusedValue = focusedValue.toLowerCase()
 
-        return database.getValue('searchs').filter(x => x.name.toLowerCase().includes(focusedValue) || focusedValue.includes(x.name.toLowerCase())).map(x => ({ name: x.name, value: x.url }))
+        return database.getValue('searchs').filter(x => x.name.toLowerCase().includes(focusedValue) || focusedValue.includes(x.name.toLowerCase())).slice(0, 24).map((x) => ({ name: x.name, value: x.name }))
     }
 })
