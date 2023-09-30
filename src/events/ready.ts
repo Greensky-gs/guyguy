@@ -8,6 +8,7 @@ export default new AmethystEvent('ready', async(client) => {
     const cache: Record<string, TextChannel> = {}
 
     monitor.watch(database.getValue('searchs').map(x => x.url))
+    monitor.init()
     monitor.onItemFound(async (item, search) => {
         const components = () => {
             return [
@@ -19,7 +20,7 @@ export default new AmethystEvent('ready', async(client) => {
                             .setEmoji('ℹ️')
                             .setURL(item.info.url),
                         new ButtonBuilder()
-                            .setLabel('Paiment')
+                            .setLabel('Paiement')
                             .setStyle(ButtonStyle.Link)
                             .setURL(`https://vinted.fr/checkout?transaction_id=${item.info.id}`)
                             .setEmoji('💳')

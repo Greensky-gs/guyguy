@@ -36,7 +36,7 @@ export default new AmethystCommand({
         content: `Vous avez déjà une recherche de ce nom`
     }).catch(log4js.trace)
     
-    if (monitor.cache.find(x => x.subUrl === url)) return interaction.reply({
+    if (monitor.cache.find(x => x === url)) return interaction.reply({
         content: "Cette url est déjà surveillée"
     }).catch(log4js.trace)
 
