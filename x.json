@@ -1,0 +1,150 @@
+{
+    "id": 3549310537,
+    "title": "Bomber Zara",
+    "price": "5.0",
+    "is_visible": 1,
+    "discount": null,
+    "currency": "EUR",
+    "brand_title": "Zara",
+    "is_for_swap": false,
+    "user": {
+        "id": 22205310,
+        "login": "vlahousse",
+        "business": false,
+        "profile_url": "https://www.vinted.be/member/22205310-vlahousse",
+        "photo": {
+            "id": 125330758,
+            "width": 369,
+            "height": 800,
+            "temp_uuid": null,
+            "url": "https://images1.vinted.net/t/02_01565_gVvVPxKuETrCEDkrA5392cxP/f800/1673991514.jpeg?s=cdcccaece3118b2b13873c4bf0ec58249cf6d9bb",
+            "dominant_color": "#31abc2",
+            "dominant_color_opaque": "#C1E6ED",
+            "thumbnails": [
+                {
+                    "type": "thumb310",
+                    "url": "https://images1.vinted.net/t/02_01565_gVvVPxKuETrCEDkrA5392cxP/310x310/1673991514.jpeg?s=6acb6a05fad45bd4672b2e7c5776b884910d7760",
+                    "width": 310,
+                    "height": 310,
+                    "original_size": null
+                },
+                {
+                    "type": "thumb150",
+                    "url": "https://images1.vinted.net/t/02_01565_gVvVPxKuETrCEDkrA5392cxP/150x150/1673991514.jpeg?s=c0a91466712ce904c2adda49a9e848b0d6c17c53",
+                    "width": 150,
+                    "height": 150,
+                    "original_size": null
+                },
+                {
+                    "type": "thumb100",
+                    "url": "https://images1.vinted.net/t/02_01565_gVvVPxKuETrCEDkrA5392cxP/100x100/1673991514.jpeg?s=1edf1b433988e1c3b821034d86848c3c7507593b",
+                    "width": 100,
+                    "height": 100,
+                    "original_size": null
+                },
+                {
+                    "type": "thumb50",
+                    "url": "https://images1.vinted.net/t/02_01565_gVvVPxKuETrCEDkrA5392cxP/50x50/1673991514.jpeg?s=0dc8677187244f02827e4c472d094b33e242ac2d",
+                    "width": 50,
+                    "height": 50,
+                    "original_size": null
+                },
+                {
+                    "type": "thumb20",
+                    "url": "https://images1.vinted.net/t/02_01565_gVvVPxKuETrCEDkrA5392cxP/20x20/1673991514.jpeg?s=3a0401f0430bde6fae003ebd207a4609619e8aa3",
+                    "width": 20,
+                    "height": 20,
+                    "original_size": null
+                }
+            ],
+            "is_suspicious": false,
+            "orientation": null,
+            "high_resolution": {
+                "id": "02_01565_gVvVPxKuETrCEDkrA5392cxP",
+                "timestamp": 1673991514,
+                "orientation": null
+            },
+            "full_size_url": "https://images1.vinted.net/tc/02_01565_gVvVPxKuETrCEDkrA5392cxP/1673991514.jpeg?s=80711ae8ca67ea1bd2a02d72537596ca7ad18106",
+            "is_hidden": false,
+            "extra": {}
+        }
+    },
+    "url": "https://www.vinted.be/items/3549310537-bomber-zara",
+    "promoted": false,
+    "photo": {
+        "id": 14408541603,
+        "image_no": 1,
+        "width": 600,
+        "height": 800,
+        "dominant_color": "#3A3935",
+        "dominant_color_opaque": "#C4C4C2",
+        "url": "https://images1.vinted.net/t/03_0233f_qnLeGzyaGu9nB6Us7p7nxt7L/f800/1696175771.jpeg?s=3cf25ce9d13145f2f65630fadb54e603ed2b3525",
+        "is_main": true,
+        "thumbnails": [
+            {
+                "type": "thumb70x100",
+                "url": "https://images1.vinted.net/t/03_0233f_qnLeGzyaGu9nB6Us7p7nxt7L/70x100/1696175771.jpeg?s=84ffb581d7970c56013cf019526044a1b79b420d",
+                "width": 70,
+                "height": 100,
+                "original_size": null
+            },
+            {
+                "type": "thumb150x210",
+                "url": "https://images1.vinted.net/t/03_0233f_qnLeGzyaGu9nB6Us7p7nxt7L/150x210/1696175771.jpeg?s=322803a1a8e665c29f40446c195c1a43e5836f5d",
+                "width": 150,
+                "height": 210,
+                "original_size": null
+            },
+            {
+                "type": "thumb310x430",
+                "url": "https://images1.vinted.net/t/03_0233f_qnLeGzyaGu9nB6Us7p7nxt7L/310x430/1696175771.jpeg?s=4eeb7a7b512a11ee79a66beb4cd99379ed51ebcd",
+                "width": 310,
+                "height": 430,
+                "original_size": null
+            },
+            {
+                "type": "thumb428x624",
+                "url": "https://images1.vinted.net/t/03_0233f_qnLeGzyaGu9nB6Us7p7nxt7L/f800/1696175771.jpeg?s=3cf25ce9d13145f2f65630fadb54e603ed2b3525",
+                "width": 321,
+                "height": 428,
+                "original_size": true
+            },
+            {
+                "type": "thumb624x428",
+                "url": "https://images1.vinted.net/t/03_0233f_qnLeGzyaGu9nB6Us7p7nxt7L/f800/1696175771.jpeg?s=3cf25ce9d13145f2f65630fadb54e603ed2b3525",
+                "width": 468,
+                "height": 624,
+                "original_size": true
+            },
+            {
+                "type": "thumb364x428",
+                "url": "https://images1.vinted.net/t/03_0233f_qnLeGzyaGu9nB6Us7p7nxt7L/f800/1696175771.jpeg?s=3cf25ce9d13145f2f65630fadb54e603ed2b3525",
+                "width": 273,
+                "height": 364,
+                "original_size": true
+            }
+        ],
+        "high_resolution": {
+            "id": "03_0233f_qnLeGzyaGu9nB6Us7p7nxt7L",
+            "timestamp": 1696175771,
+            "orientation": null
+        },
+        "is_suspicious": false,
+        "full_size_url": "https://images1.vinted.net/tc/03_0233f_qnLeGzyaGu9nB6Us7p7nxt7L/1696175771.jpeg?s=fbea5f4b9e37602fda69d79dc50e83b3e8d782f6",
+        "is_hidden": false,
+        "extra": {}
+    },
+    "favourite_count": 0,
+    "is_favourite": false,
+    "badge": null,
+    "conversion": null,
+    "service_fee": "0.95",
+    "total_item_price": "5.95",
+    "view_count": 0,
+    "size_title": "M",
+    "content_source": "catalog",
+    "search_tracking_params": {
+        "score": null,
+        "matched_queries": []
+    }
+}

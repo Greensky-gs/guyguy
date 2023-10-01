@@ -1,7 +1,9 @@
 import database from "../../../cache/database";
-import MonitorCache from "../types/MonitorCache";
+import vinted from 'vinted-api'
 import List from "./List.js";
 import VintedItem from "./VintedItem.js";
+import { log4js } from "amethystjs";
+import { Item, ResponseType } from "../../../typings/vinted";
 
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 
@@ -9,6 +11,7 @@ export default class VintedMonitor {
     private _searchs: string[] = [];
     private found: string[] = []
     private vintedEvent: ((item: VintedItem, data: { name: string; url: string; channelId: string }) => unknown) | undefined;
+    private androzEvent: ((item: Item, data: { name: string; url: string; channelId: string; }) => unknown) | undefined
     private timeRange: number;
     private initied = false;
 
@@ -64,13 +67,16 @@ export default class VintedMonitor {
         return removed;
     }
 
-    onItemFound(callback: (item: VintedItem, search: { name: string; channelId: string; url: string; }) => unknown) {
+    public onItemFound(callback: (item: VintedItem, search: { name: string; channelId: string; url: string; }) => unknown) {
         this.vintedEvent = callback;
+        return this
+    }
+    public onAndrozFound(callback: ((item: Item, data: { name: string; url: string; channelId: string; }) => unknown)) {
+        this.androzEvent = callback
+        return this;
     }
 
-    private async check(id: number, request: boolean){
-        const url = this._searchs[id];
-        if (!url) return
+    private async usingWrapper(url: string, request: boolean, id: number) {
         let found = []
         if (request) found = await new List(url).initialize(this.timeRange);
 
@@ -91,5 +97,28 @@ export default class VintedMonitor {
                 if (this.vintedEvent) this.vintedEvent(newItem, database.getValue('searchs').find(x => x.url === url));
             }
         })
+    }
+    private async usingAndroz(url: string, id: number) {
+        const posts = await vinted.search(url).catch(log4js.trace) as ResponseType;
+        if (!posts || !posts.items || !posts.items?.length) return
+
+        const found = posts.items.filter(x => !this.found.includes(x.id.toString()))
+        if (!found.length) return
+
+        found.forEach((item) => {
+            if (this.found.includes(item.id.toString())) return
+
+            this.found.push(item.id.toString())
+            database.pushTo('cache', item.id.toString())
+
+            if (this.androzEvent) this.androzEvent(item, database.getValue('searchs').find(x => x.url === url))
+        })
+    }
+    private async check(id: number, request: boolean) {
+        const url = this._searchs[id];
+        if (!url) return
+        
+        // this.usingWrapper(url, request, id)
+        this.usingAndroz(url, id)
     }
 }
