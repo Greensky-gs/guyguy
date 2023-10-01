@@ -46,7 +46,7 @@ export const androzItemEmbed = (client: Client, item: Item) => {
     const currency = (x: string) => currencies[x] ?? x
     return new EmbedBuilder()
         .setFooter({ text: client.user.username, iconURL: client.user.displayAvatarURL() })
-        .setColor(item.photo.dominant_color as ColorResolvable)
+        .setColor(item?.photo?.dominant_color as ColorResolvable ?? 'Orange')
         .setURL(item.url)
         .setTitle(item.title)
         .setFields(
