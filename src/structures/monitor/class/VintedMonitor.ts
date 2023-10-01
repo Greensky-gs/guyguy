@@ -25,7 +25,7 @@ export default class VintedMonitor {
     private start() {
         setInterval(() => {
             this._searchs.forEach((list, index) => {
-                const sliced = this.found.slice(0, Math.ceil(this.found.length / 2));
+                const sliced = this.found.slice(Math.ceil(this.found.length / 2), this.found.length - 1);
                 database.setValue('cache', sliced)
                 this.found = sliced
             })
