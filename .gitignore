@@ -3,3 +3,4 @@ test/
 dist/
 *.logs
 .env
+.vscode/
