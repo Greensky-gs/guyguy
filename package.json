@@ -6,7 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "amethystjs": "^1.7.3",
-    "axios": "^1.6.0",
+    "axios": "^1.7.4",
     "discord.js": "^14.13.0",
     "dotenv": "^16.3.1",
     "tsc": "^2.0.4",
